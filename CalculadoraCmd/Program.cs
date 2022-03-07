@@ -5,30 +5,36 @@ namespace CalculadoraCmd
 {
     class Program
     {
+        /* ENUM - Tipo de valor usado para representar uma lista de constantes inteiras nomeadas
+        Criado usando a palavra-chave "enum" dentro de uma classe, estrutura ou namespace */
 
         enum Menu { Soma = 1, Subtracao = 2, Divisao = 3, Multiplacao = 4, Potencia = 5, Raiz = 6, Sair = 7 }
-        static void Main(string[] args)
+
+
+        /* void pois não retorna nada, enum criado fora da Main pois podemos acessar dentro de todas as 
+        classes no programa princal */
+
+        static void Main(string[] args) 
         {
 
             bool escolheuSair = false;
 
-            while (!escolheuSair) //--> Enquanto o usuário NÃO(!) escolher a opção SAIR(7), exiba o Menu
+            while (!escolheuSair) // Enquanto o usuário NÃO(!) escolher a opção SAIR(7), exiba o Menu
             {
 
                 Console.WriteLine("Seja bem vindo ao CALC, selecione uma das opções: ");
 
                 Console.WriteLine("1-Soma\n2-Subtração\n3-Divisão\n4-Multiplicação" +
-                    "\n5-Potência\n6-Raiz\n7-Sair"); //--> Nos mostra na tela do CMD o Menu de opções
+                    "\n5-Potência\n6-Raiz\n7-Sair"); //-> Nos mostra na tela do CMD o Menu de opções
 
                 Menu opcao = (Menu)int.Parse(Console.ReadLine());
 
-                /* Casting --> Menu opção veio de uma variável do tipo STRING, convertermos para inteiro com
+                /* Casting: Menu opção veio de uma variável do tipo STRING, convertermos para inteiro com
                 INT.PARSE, depois armazenamos os valores no (MENU) */
 
                 /*Console.WriteLine(opcao);*/
 
-
-                switch (opcao)
+                switch (opcao) // Switch para chamarmos as funções definidas nas próximas classes
                 {
                     case Menu.Soma:
                         Soma();
@@ -49,10 +55,10 @@ namespace CalculadoraCmd
                         Raiz();
                         break;
                     case Menu.Sair:
-                        escolheuSair = true; //--> Caso a opção escolhida seja SAIR(7)
+                        escolheuSair = true; // Caso a opção escolhida seja SAIR(7), fecha o programa
                         break;
                 }
-                Console.Clear(); //--> Limpa o console quando selecionamos uma opção no Menu da CALC
+                Console.Clear(); // Limpa o console quando selecionamos uma opção no Menu da CALC após exbibir
             }
         }
 
@@ -100,7 +106,7 @@ namespace CalculadoraCmd
             int f = int.Parse(Console.ReadLine());
 
             float resultado = (float)e / (float)f;
-            Console.WriteLine("O resultado é: " + resultado); 
+            Console.WriteLine("O resultado é: " + resultado);
             Console.WriteLine("Aperte ENTER para voltar ao Menu");
             Console.ReadLine();
         }
